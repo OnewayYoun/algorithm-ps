@@ -12,7 +12,7 @@
 import re
 
 def solution(dartResult):
-    scores = re.findall('[0-9]+[SDT]*[*#]*', dartResult)
+    scores = re.findall('[0-9]+[SDT][*#]?', dartResult)
     tmp = []
     for i, v in enumerate(scores):
         num = ''
