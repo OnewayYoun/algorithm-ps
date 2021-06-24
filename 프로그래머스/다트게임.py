@@ -8,6 +8,7 @@
 7)	1D2S3T* 	59	    12 + 21 * 2 + 33 * 2
 '''
 
+
 import re
 
 def solution(dartResult):
