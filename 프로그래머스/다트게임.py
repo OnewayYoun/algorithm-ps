@@ -39,6 +39,7 @@ def solution(dartResult):
 
     return sum(tmp)
 
+
 print(solution("1S2D*3T"))
 print(solution("1D2S#10S"))
 print(solution("1D2S0T"))
@@ -46,5 +47,39 @@ print(solution("1S*2T*3S"))
 print(solution("1D#2S*3S"))
 print(solution("1T2D3D#"))
 print(solution("1D2S3T*"))
+
+
+print('\n\n\n')
+
+def solution2(dart):
+    power = {
+        'S' : 1,
+        'D' : 2,
+        'T' : 3,
+    }
+    option = {
+        '' : 1,
+        '*' : 2,
+        '#' : -1,
+    }
+
+    answer = re.findall('(\d+)([SDT])([*#]?)', dart)
+    for i, v in enumerate(answer):
+        answer[i] = int(v[0]) ** power[v[1]] * option[v[2]]
+        if i != 0 and v[2] == '*':
+            answer[i-1] *= 2
+    return sum(answer)
+
+
+print(solution2("1S2D*3T"))
+print(solution2("1D2S#10S"))
+print(solution2("1D2S0T"))
+print(solution2("1S*2T*3S"))
+print(solution2("1D#2S*3S"))
+print(solution2("1T2D3D#"))
+print(solution2("1D2S3T*"))
+
+
+
 
 #출처: 프로그래머스 코딩테스트 연습, https://programmers.co.kr/learn/courses/30/lessons/17682
