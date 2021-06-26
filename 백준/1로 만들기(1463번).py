@@ -11,3 +11,6 @@ for i in range(2, num+1):
         dp[i] = min(dp[i], dp[i//3] + 1)
 
 print(dp[num])
+
+
+#출처: 백준 온라인 저지, https://www.acmicpc.net/problem/1463
