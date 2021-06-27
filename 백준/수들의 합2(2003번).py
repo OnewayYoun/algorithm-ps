@@ -23,4 +23,6 @@ for start in range(n):
     sum -= pers[start]
 
 print(answer)
-print(sum)
+
+
+#출처: 백준 온라인 저지, https://www.acmicpc.net/problem/2003
