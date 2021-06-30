@@ -4,16 +4,7 @@ import math
 import re
 
 def replace_sharp(string):
-    if 'C#' in string:
-        string = string.replace('C#', 'c')
-    if 'D#' in string:
-        string = string.replace('D#', 'd')
-    if 'F#' in string:
-        string = string.replace('F#', 'f')
-    if 'G#' in string:
-        string = string.replace('G#', 'g')
-    if 'A#' in string:
-        string = string.replace('A#', 'a')
+    string = string.replace('C#', 'c').replace('D#', 'd').replace('F#', 'f').replace('G#', 'g').replace('A#', 'a')
 
     return string
 
