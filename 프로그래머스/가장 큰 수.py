@@ -13,3 +13,5 @@ def solution(numbers):
 #[0, 0, 0, 0]같은 경우 0000을 int로 변화해서 0으로 만들고 다시 str으로 리턴하기 위해
 
 print(solution([3, 30, 34, 5, 9]))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/42746

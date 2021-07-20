@@ -30,3 +30,5 @@ print(list(map(''.join, permutations('011', 3))))
 
 
 print(solution("011"))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/42839

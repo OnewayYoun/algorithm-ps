@@ -19,3 +19,5 @@ n = int(input())
 words = set([input() for _ in range(n)])
 a = sorted(words, key = lambda x : (len(x), x))
 print('\n'.join(a))
+
+# 출처 : https://www.acmicpc.net/problem/1181

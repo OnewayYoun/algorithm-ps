@@ -24,3 +24,5 @@ def solution(n, times):
 
 
 print(solution(6, [7, 10]))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/43238

@@ -72,4 +72,4 @@ places = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXX
 
 print(solution(places))
 
-# 출처: https://programmers.co.kr/learn/courses/30/lessons/81302
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/81302

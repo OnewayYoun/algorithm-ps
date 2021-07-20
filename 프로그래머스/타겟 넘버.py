@@ -24,3 +24,5 @@ def solution1(numbers, target):
 
 print(solution([1, 1, 1, 1, 1], 3))
 print(solution1([1, 1, 1, 1, 1], 3))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/43165

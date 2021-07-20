@@ -41,3 +41,5 @@ def solution(distance, rocks, n):
 
 
 print(solution(25, [2, 14, 11, 21, 17], 2))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/43236

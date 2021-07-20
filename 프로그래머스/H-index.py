@@ -21,3 +21,5 @@ def solution1(citations):
 
 print(solution([3, 0, 6, 1, 5]))
 print(solution1([3, 0, 6, 1, 5]))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/42747

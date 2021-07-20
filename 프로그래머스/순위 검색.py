@@ -39,3 +39,5 @@ def solution(info, query):
     return check(info, query)
 
 print(solution(info, query))
+
+# 출처 : https://programmers.co.kr/learn/courses/30/lessons/72412
