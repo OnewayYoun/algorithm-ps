@@ -53,11 +53,11 @@ if __name__ == '__main__':
         a, b = map(int, input().split())
         ladder[a-1][b-1] = True
 
-    res = 10000
+    res = 4
     for min_cnt in range(4):        # cnt가 0~3의 경우를 체크
         dfs(0, 0)
-        if res != 10000:            # examine함수가 True 반환시 res값이 cnt값으로 변환되어 빠져나와서 res를 프린트하고 루프 종료
+        if res != 4:            # examine함수가 True 반환시 res값이 cnt값으로 변환되어 빠져나와서 res를 프린트하고 루프 종료
             print(res)
             break
-    else:
-        print(-1)                   # 0~3 범위내에 답이 없을시 -1반환(사다리를 넣어 답을 구할수 없는경우, cnt가 3이 초과하는 경우)
+        else:
+            print(-1)                   # 0~3 범위내에 답이 없을시 -1반환(사다리를 넣어 답을 구할수 없는경우, cnt가 3이 초과하는 경우)
