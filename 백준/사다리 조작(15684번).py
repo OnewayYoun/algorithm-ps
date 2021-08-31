@@ -17,6 +17,47 @@ out: 3
 import sys
 
 
-input = sys.stdin.readline
-N, M, H = map(int, input().split())
-info = [list(map(int, input().split())) for _ in range(M)]
+def examine():                      # 사다리 결과 검수 함수
+    for i in range(N):
+        tmp = i
+        for j in range(H):
+            if ladder[j][tmp]:      # 현 위치에 연결로 있으면 우측이동
+                tmp += 1
+            elif ladder[j][tmp-1]:    # 이전 위치에 연결로 있으면 좌측이동
+                tmp -= 1
+        if tmp != i:
+            return False            # 시작지점에서 끝나지 않으면 False 리턴
+    return True                     # 모든 세로선이 같은 지점에서 끝나므로 True 리턴
+
+
+def dfs(start, cnt):
+    global res
+    if cnt == min_cnt:
+        if examine():
+            res = cnt
+        return
+    for i in range(start, H):
+        for j in range(N-1):
+            if not ladder[i][j] | ladder[i][j-1] | ladder[i][j+1]:
+                ladder[i][j] = True
+                dfs(i, cnt+1)
+                ladder[i][j] = False
+
+
+if __name__ == '__main__':
+    # 입력값들 받기
+    input = sys.stdin.readline
+    N, M, H = map(int, input().split())
+    ladder = [[False]*N for _ in range(H)]
+    for i in range(M):
+        a, b = map(int, input().split())
+        ladder[a-1][b-1] = True
+
+    res = 10000
+    for min_cnt in range(4):
+        dfs(0, 0)
+        if res != 10000:
+            print(res)
+            break
+    else:
+        print(-1)
