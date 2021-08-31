@@ -32,16 +32,16 @@ def examine():                      # 사다리 결과 검수 함수
 
 def dfs(start, cnt):
     global res
-    if cnt == min_cnt:
+    if cnt == min_cnt:              # min_cnt가 0, 1, 2, 3 일때 각각 처리하다가 examine함수가 True 리턴시 res를 현재 cnt 값을 넣어주고 빠져나오기
         if examine():
             res = cnt
         return
-    for i in range(start, H):
+    for i in range(start, H):       # 시간 단축을위해 재귀함수들어갈때 지난 세로선은 처리 안하게 하기
         for j in range(N-1):
-            if not ladder[i][j] | ladder[i][j-1] | ladder[i][j+1]:
-                ladder[i][j] = True
+            if not ladder[i][j] | ladder[i][j-1] | ladder[i][j+1]:      # 세로선이 연결되면 안되므로 현재, 왼쪽, 우측에 사다리가 없을경우에만 추가하기
+                ladder[i][j] = True                                     # 사다리 추가
                 dfs(i, cnt+1)
-                ladder[i][j] = False
+                ladder[i][j] = False                                    # 백트레킹을 위해 재귀가 끝나면 처리된 사다리 제거
 
 
 if __name__ == '__main__':
@@ -54,10 +54,10 @@ if __name__ == '__main__':
         ladder[a-1][b-1] = True
 
     res = 10000
-    for min_cnt in range(4):
+    for min_cnt in range(4):        # cnt가 0~3의 경우를 체크
         dfs(0, 0)
-        if res != 10000:
+        if res != 10000:            # examine함수가 True 반환시 res값이 cnt값으로 변환되어 빠져나와서 res를 프린트하고 루프 종료
             print(res)
             break
     else:
-        print(-1)
+        print(-1)                   # 0~3 범위내에 답이 없을시 -1반환(사다리를 넣어 답을 구할수 없는경우, cnt가 3이 초과하는 경우)
