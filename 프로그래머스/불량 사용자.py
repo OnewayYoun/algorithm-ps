@@ -1,7 +1,5 @@
-u = ["frodo", "fradi", "crodo", "abc123", "frodoc"]
-b = ["*rodo", "*rodo", "******"]
-
 from itertools import permutations
+
 
 def check(per, b):
     for i in range(len(b)):
@@ -17,6 +15,7 @@ def check(per, b):
                     return False
     return True
 
+
 def solution(u, b):
     answer = []
     pers = list(permutations(u, len(b)))
@@ -27,6 +26,10 @@ def solution(u, b):
             if tmp not in answer:
                 answer.append(tmp)
     return len(answer)
+
+
+u = ["frodo", "fradi", "crodo", "abc123", "frodoc"]
+b = ["*rodo", "*rodo", "******"]
 
 print(solution(u, b))
 
