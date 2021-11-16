@@ -95,3 +95,13 @@ class Test:
 
 t = Test()
 t.decorated_method()
+
+
+#####################################################################
+# *args, **kargs
+
+def number_and_name(*args, **kwargs):
+    print(args, kwargs)
+
+
+number_and_name(1, 2, 3, name="홍길동", age=15)
