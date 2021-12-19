@@ -20,16 +20,14 @@ class Solution:
         answer = ''
         min_pre = min(strs)
         max_pre = max(strs)
+        print(min_pre, max_pre)
         for i, v in enumerate(min_pre):
             if v != max_pre[i]:
                 return min_pre[:i]
         return min_pre
 
 
-
-
 if __name__ == '__main__':
-    strs = ["dog","racecar","car"]
+    strs = ["flower", "flow", "flight"]
     S = Solution()
     print(S.longestCommonPrefix(strs))
-    print(S.lcp(strs))
