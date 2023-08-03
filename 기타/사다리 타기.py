@@ -35,12 +35,15 @@ def print_ladder(ladder: List[Tuple[int, int]], columns: int):
     result = [['|'] * columns for _ in range(len(ladder))]
     for idx, bridge in enumerate(ladder):
         result[idx].insert(sorted(bridge)[0], '_')
+        for i in range(len(result[idx])-1):
+            if result[idx][i] == result[idx][i+1]:
+                result[idx][i] = '| '
     for i in result:
-        print(''.join(i).replace('||', '| |'))
+        print(''.join(i))
 
 
 if __name__ == '__main__':
-    columns = 3
+    columns = 10
     ladder = generate_ladder(columns=columns)
     print(ladder)
     print_ladder(ladder, columns)
