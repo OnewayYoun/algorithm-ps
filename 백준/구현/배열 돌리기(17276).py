@@ -34,6 +34,9 @@ def rotate(lst: list, degree: int, n: int) -> list:
     copied_lst = deepcopy(lst)
     if degree < 0:
         degree += 360
+    degree %= 360
+    if degree == 0:
+        return copied_lst
     for _ in range(degree//45):
         for i in range(n):
             copied_lst[i][n // 2] = lst[i][i]
