@@ -2,11 +2,10 @@ from collections import defaultdict
 
 
 def solution(n, lost, reserve):
-    answer = n - len(set(lost) - set(reserve))
-    search_table = defaultdict(bool, {i: True for i in set(lost) - set(reserve)})
-    for i in set(reserve) - (set(lost)):
-        if search_table[i]:
-            continue
+    lost, reserve = set(lost), set(reserve)
+    answer = n - len(lost - reserve)
+    search_table = defaultdict(bool, {i: True for i in lost - reserve})
+    for i in reserve - lost:
         for j in [-1, +1]:
             if search_table[i + j]:
                 search_table[i + j] = False
