@@ -5,6 +5,8 @@ def bfs(X, Y, maps):
     dq = deque([(0, 0)])
     dx = [0, 0, -1, 1]
     dy = [-1, 1, 0, 0]
+    visited = [[False] * len(maps[0]) for _ in range(len(maps))]
+    visited[0][0] = True
 
     while dq:
         x, y = dq.popleft()
@@ -12,9 +14,10 @@ def bfs(X, Y, maps):
             nx, ny = x + dx[i], y + dy[i]
             if not 0 <= nx < X or not 0 <= ny < Y:
                 continue
-            if maps[ny][nx] == 1:
+            if maps[ny][nx] == 1 and not visited[ny][nx]:
                 maps[ny][nx] = maps[y][x] + 1
                 dq.append((nx, ny))
+                visited[ny][nx] = True
 
 
 def solution(maps):
