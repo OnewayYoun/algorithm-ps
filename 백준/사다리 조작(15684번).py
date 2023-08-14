@@ -37,11 +37,15 @@ def dfs(start, cnt):
             res = cnt
         return
     for i in range(start, H):       # 시간 단축을위해 재귀함수들어갈때 지난 세로선은 처리 안하게 하기
+        if res != 4:
+            break
         for j in range(N-1):
             if not ladder[i][j] | ladder[i][j-1] | ladder[i][j+1]:      # 세로선이 연결되면 안되므로 현재, 왼쪽, 우측에 사다리가 없을경우에만 추가하기
                 ladder[i][j] = True                                     # 사다리 추가
                 dfs(i, cnt+1)
                 ladder[i][j] = False                                    # 백트레킹을 위해 재귀가 끝나면 처리된 사다리 제거
+                if res != 4:
+                    break
 
 
 if __name__ == '__main__':
