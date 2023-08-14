@@ -59,5 +59,23 @@ if __name__ == '__main__':
         if res != 4:            # examine함수가 True 반환시 res값이 cnt값으로 변환되어 빠져나와서 res를 프린트하고 루프 종료
             print(res)
             break
-        else:
-            print(-1)                   # 0~3 범위내에 답이 없을시 -1반환(사다리를 넣어 답을 구할수 없는경우, cnt가 3이 초과하는 경우)
+    else:
+        print(-1)                   # 0~3 범위내에 답이 없을시 -1반환(사다리를 넣어 답을 구할수 없는경우, cnt가 3이 초과하는 경우)
+
+
+"""
+for i in range(1,10):
+  if i%5 == 0:
+      break
+  else:
+      print("for else")
+Here, the else: is taken if the if condition is false, each time the loop is executed.
+
+
+for i in range(1,10):
+  if i%5 == 0:
+      break
+else:
+  print("for else")
+Here, the else: belongs to the for, and is taken when you exit the for loop if its body was never executed completely
+"""
