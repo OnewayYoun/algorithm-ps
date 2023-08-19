@@ -1,4 +1,4 @@
-def bubble_sort(lst: list) -> list:
+def bubble_sort(lst: list):
     for i in range(len(lst) - 1):
         flag = True
         for j in range(len(lst) - 1 - i):
