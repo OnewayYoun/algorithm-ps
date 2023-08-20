@@ -56,3 +56,13 @@ if __name__ == '__main__':
     n = int(input())
     print(fib(n))
 '''
+
+
+def fib(x, dp={}):
+    if x in dp: return dp[x]
+    if x <= 2: return 1
+    dp[x] = fib(x - 1) + fib(x - 2)
+    return dp[x]
+
+
+print(fib(10))
