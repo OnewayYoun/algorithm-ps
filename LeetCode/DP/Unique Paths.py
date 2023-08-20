@@ -13,7 +13,7 @@ class Solution:
     def uniquePaths(self, m: int, n: int, dp={}) -> int:
         key = f'{m},{n}'
         if key in dp:
-            return dp[f'{m},{n}']
+            return dp[key]
         if m == 1 and n == 1:
             return 1
         if m == 0 or n == 0:
