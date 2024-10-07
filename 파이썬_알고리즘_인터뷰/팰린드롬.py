@@ -25,6 +25,6 @@ def solution_with_slicing(string: str) -> bool:
 
 
 if __name__ == '__main__':
-    print(solution_with_list("a::a"))
-    print(solution_with_deque("a::a"))
-    print(solution_with_slicing("a::a"))
+    print(solution_with_list("a:1:a"))
+    print(solution_with_deque("a:1:a"))
+    print(solution_with_slicing("a:1:a"))
