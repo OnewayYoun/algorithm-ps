@@ -6,13 +6,13 @@ def factorial_iterative(n):
 
 
 def factorial_recursive(n):
-    if n == 1:
+    if n <= 1:
         return 1
     res = n * factorial_recursive(n - 1)
     return res
 
 
-print(factorial_recursive(5))
+print(factorial_recursive(0))
 
 # def recursive(i):
 #     if i == 3:
