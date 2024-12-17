@@ -23,5 +23,18 @@ class Solution:
                 return prefix
         return prefix
 
+    def longestCommonPrefix1(self, strs: List[str]) -> str:
+        prefix = strs[0]
+        n = len(prefix)
+
+        for i in range(1, len(strs)):
+            while prefix != strs[i][:n]:
+                n -= 1
+                if n == 0:
+                    return ''
+                prefix = prefix[:n]
+        return prefix
+
 
 print(Solution().longestCommonPrefix(["flower"]))
+print(Solution().longestCommonPrefix1(["flower"]))
