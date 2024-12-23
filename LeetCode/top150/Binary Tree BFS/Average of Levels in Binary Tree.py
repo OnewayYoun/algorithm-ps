@@ -11,6 +11,7 @@ class TreeNode:
 
 
 class Solution:
+    # BFS
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         dd = defaultdict(list)
         dq = deque()
@@ -25,3 +26,19 @@ class Solution:
                 dq.append((node.right, level + 1))
 
         return [sum(val) / len(val) for _, val in sorted(dd.items())]
+
+    # DFS
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        def dfs(node, level):
+            if not node:
+                return
+            if level == len(answer):
+                answer.append([])
+            answer[level].append(node.val)
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+
+        answer = []
+        dfs(root, 0)
+
+        return [sum(i) / len(i) for i in answer]
