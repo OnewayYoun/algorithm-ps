@@ -25,5 +25,17 @@ class Solution:
                 break
         return answer
 
+    def hIndex1(self, citations: List[int]) -> int:
+        citations.sort(reverse=True)
+        h_index = 0
 
-print(Solution().hIndex([1, 2, 0]))
+        for i, c in enumerate(citations):
+            if i < c:
+                h_index = i + 1
+            else:
+                break
+
+        return h_index
+
+
+print(Solution().hIndex1([5, 5, 5, 5]))
