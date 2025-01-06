@@ -37,6 +37,20 @@ class Solution:
 
         return [product_sum_right[i] * product_sum_left[i + 1] for i in range(len(nums))]
 
+    def productExceptSelf3(self, nums: List[int]) -> List[int]:
+        prefix, postfix = 1, 1
+        answer = [1] * len(nums)
+
+        for i in range(len(nums)):
+            answer[i] *= prefix
+            prefix *= nums[i]
+
+            answer[-i - 1] *= postfix
+            postfix *= nums[-i - 1]
+
+        return answer
+
 
 # print(Solution().productExceptSelf([-1, 1, 0, -3, 3]))
-print(Solution().productExceptSelf2([2, 2, 3, 4]))
+# print(Solution().productExceptSelf2([2, 2, 3, 4]))
+print(Solution().productExceptSelf3([1, 2, 3, 4]))
