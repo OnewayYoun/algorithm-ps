@@ -58,7 +58,38 @@ class Solution:
         return answer
 
     def longestConsecutive4(self, nums: List[int]) -> int:
-        pass
+        print(sorted(set(nums)))
+        if len(nums) <= 1:
+            return len(nums)
+        uf, nums_set = UF(nums), set(nums),
+        for num in nums_set:
+            if num + 1 in nums_set and uf.find(num) != uf.find(num + 1):
+                uf.union(num, num + 1)
+        dd = defaultdict(int)
+        for num in nums_set:
+            dd[uf.find(num)] += 1
+        return max(dd.values())
+
+class UF:
+    def __init__(self, nums):
+        self.parent = {n: n for n in nums}
+        self.rank = {n: 0 for n in nums}
+
+    def find(self, n):
+        if n != self.parent[n]:
+            self.parent[n] = self.find(self.parent[n])
+        return self.parent[n]
+
+    def union(self, n1, n2):
+        p1, p2 = self.find(n1), self.find(n2)
+        if p1 != p2:
+            if self.rank[p1] > self.rank[p2]:
+                self.parent[p2] = p1
+            elif self.rank[p1] < self.rank[p2]:
+                self.parent[p1] = p2
+            else:
+                self.parent[p1] = p2
+                self.rank[p2] += 1
 
 
-print(Solution().longestConsecutive3([100, 4, 200, 1, 3, 2]))
+print(Solution().longestConsecutive4([4, 0, -4, -2, 2, 5, 2, 0, -8, -8, -8, -8, -1, 7, 4, 5, 5, -4, 6, 6, -3]))
