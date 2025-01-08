@@ -1,3 +1,25 @@
+class UF:
+    def __init__(self, nums):
+        self.parent = {n: n for n in nums}
+        self.rank = {n: 0 for n in nums}
+
+    def find(self, n):
+        if n != self.parent[n]:
+            self.parent[n] = self.find(self.parent[n])
+        return self.parent[n]
+
+    def union(self, n1, n2):
+        p1, p2 = self.find(n1), self.find(n2)
+        if p1 != p2:
+            if self.rank[p1] > self.rank[p2]:
+                self.parent[p2] = p1
+            elif self.rank[p1] < self.rank[p2]:
+                self.parent[p1] = p2
+            else:
+                self.parent[p1] = p2
+                self.rank[p2] += 1
+
+
 def find_parent(parent, x):
     if parent[x] != x:
         parent[x] = find_parent(parent, parent[x])
