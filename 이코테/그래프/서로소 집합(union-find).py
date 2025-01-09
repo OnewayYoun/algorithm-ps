@@ -20,6 +20,24 @@ class UF:
                 self.rank[p1] += 1
 
 
+def detect_cycle(edges, nums):
+    uf = UF(nums)
+    for u, v in edges:
+        if uf.find(u) == uf.find(v):  # 두 노드가 이미 같은 집합에 있다면 싸이클 발생
+            return True
+        uf.union(u, v)
+    return False
+
+
+nums = [1, 2, 3]
+edges = [(1, 2), (2, 3), (3, 1)]
+
+if detect_cycle(edges, nums):
+    print("싸이클이 존재합니다.")
+else:
+    print("싸이클이 존재하지 않습니다.")
+
+"""
 def find_parent(parent, x):
     if parent[x] != x:
         parent[x] = find_parent(parent, parent[x])
@@ -55,10 +73,10 @@ print('부모 테이블: ', end='')
 for i in range(1, v + 1):
     print(parent[i], end=' ')
 
-"""
-6 4
-1 4
-2 3
-2 4
-5 6
+
+# 6 4
+# 1 4
+# 2 3
+# 2 4
+# 5 6
 """
