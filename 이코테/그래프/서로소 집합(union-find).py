@@ -16,8 +16,8 @@ class UF:
             elif self.rank[p1] < self.rank[p2]:
                 self.parent[p1] = p2
             else:
-                self.parent[p1] = p2
-                self.rank[p2] += 1
+                self.parent[p2] = p1
+                self.rank[p1] += 1
 
 
 def find_parent(parent, x):
