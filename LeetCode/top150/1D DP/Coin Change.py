@@ -13,6 +13,7 @@ class Solution:
     Output: 0
     """
 
+    # Bottom-Up
     def coinChange(self, coins: List[int], amount: int) -> int:
         dp = [float('inf')] * (amount + 1)
         dp[0] = 0
@@ -23,5 +24,27 @@ class Solution:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
         return dp[amount] if dp[amount] != float('inf') else -1
 
+    # Top-Down
+    def coinChange1(self, coins: List[int], amount: int) -> int:
+        memo = {}
 
-print(Solution().coinChange(coins=[2147483647], amount=2))
+        def dfs(rem):
+            if rem < 0:
+                return float('inf')
+            if rem == 0:
+                return 0
+            if rem in memo:
+                return memo[rem]
+
+            min_coins = float('inf')
+            for coin in coins:
+                min_coins = min(min_coins, dfs(rem - coin) + 1)
+
+            memo[rem] = min_coins
+            return min_coins
+
+        result = dfs(amount)
+        return result if result != float('inf') else -1
+
+
+print(Solution().coinChange1(coins=[1, 2, 5], amount=11))
