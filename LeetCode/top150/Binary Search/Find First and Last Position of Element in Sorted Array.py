@@ -15,8 +15,6 @@ class Solution:
     """
 
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        if not nums:
-            return [-1, -1]
         first_idx = bisect_left(nums, target)
         if first_idx < len(nums) and nums[first_idx] == target:
             return [first_idx, bisect_right(nums, target) - 1]
@@ -52,4 +50,4 @@ class Solution:
             return [-1, -1]
 
 
-print(Solution().searchRange(nums=[2, 2], target=3))
+print(Solution().searchRange(nums=[], target=3))
