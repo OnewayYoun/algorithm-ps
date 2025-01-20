@@ -31,5 +31,16 @@ class Solution:
 
         return answer
 
+    def merge1(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort()
+        answer = [intervals[0]]
 
-print(Solution().merge(intervals=[[1, 4], [2, 3]]))
+        for interval in intervals[1:]:
+            if answer[-1][0] <= interval[0] <= answer[-1][1]:
+                answer[-1][1] = max(answer[-1][1], interval[1])
+            else:
+                answer.append(interval)
+        return answer
+
+
+print(Solution().merge1(intervals=[[1, 3], [2, 6], [8, 10], [15, 18]]))
