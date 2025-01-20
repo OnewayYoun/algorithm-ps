@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution1:
+class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
         Do not return anything, modify nums1 in-place instead.
@@ -12,9 +12,7 @@ class Solution1:
             nums1[-1 - i] = nums2[i]
         nums1.sort()
 
-
-class Solution2:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    def merge1(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
         Do not return anything, modify nums1 in-place instead.
         nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
@@ -34,6 +32,26 @@ class Solution2:
             cur -= 1
         print(nums1)
 
+    def merge2(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
 
-s2 = Solution2()
-s2.merge([4, 5, 6, 0, 0, 0], 3, [1, 2, 3], 3)
+        p1, p2 = m - 1, n - 1
+        cur_idx = len(nums1) - 1
+
+        while p1 >= 0 and p2 >= 0:
+            if nums1[p1] > nums2[p2]:
+                nums1[cur_idx] = nums1[p1]
+                p1 -= 1
+            else:
+                nums1[cur_idx] = nums2[p2]
+                p2 -= 1
+            cur_idx -= 1
+        if p1 < 0:
+            nums1[:cur_idx + 1] = nums2[:p2 + 1]
+        print(nums1)
+
+
+s2 = Solution()
+s2.merge2([4, 5, 6, 0, 0, 0], 3, [1, 2, 3], 3)
