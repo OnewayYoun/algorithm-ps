@@ -17,10 +17,8 @@ class Twitter:
             self.newsfeed[follower][userId].append([tweetId, time.time()])
 
     def getNewsFeed(self, userId: int) -> List[int]:
-        n = 0
         newsfeeds = []
         for feeds in self.newsfeed[userId].values():
-            n += len(feeds)
             newsfeeds += feeds
         newsfeeds.sort(key=lambda x: x[1])
 
