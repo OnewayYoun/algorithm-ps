@@ -32,5 +32,18 @@ class Solution:
 
         return dfs(0, 0)
 
+    def longestCommonSubsequence1(self, text1: str, text2: str) -> int:
+        cache = [[0 for _ in range(len(text2) + 1)] for _ in range(len(text1) + 1)]
 
-print(Solution().longestCommonSubsequence(text1="abcde", text2="ace"))
+        for i in range(len(text1) - 1, -1, -1):
+            for j in range(len(text2) - 1, -1, -1):
+                if text1[i] == text2[j]:
+                    cache[i][j] = 1 + cache[i + 1][j + 1]
+                else:
+                    cache[i][j] = max(cache[i + 1][j], cache[i][j + 1])
+
+        return cache[0][0]
+
+
+# print(Solution().longestCommonSubsequence(text1="abcde", text2="ace"))
+print(Solution().longestCommonSubsequence1(text1="abcde", text2="ace"))
