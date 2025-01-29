@@ -22,10 +22,7 @@ class Solution:
 
     def numIslands(self, grid: List[List[str]]) -> int:
         def dfs(x, y):
-            if x < 0 or x >= len(grid[0]) or y < 0 or y >= len(grid):
-                return False
-
-            if grid[y][x] == '0':
+            if x < 0 or x >= len(grid[0]) or y < 0 or y >= len(grid) or grid[y][x] == '0':
                 return False
             else:
                 grid[y][x] = '0'
