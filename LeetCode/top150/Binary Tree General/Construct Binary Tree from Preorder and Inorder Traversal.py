@@ -30,10 +30,31 @@ class Solution:
 
         return root
 
+    # optimized version
+    def buildTree1(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        cache = {val: idx for idx, val in enumerate(inorder)}
+        preorder_idx = 0
+
+        def helper(left, right):
+            nonlocal preorder_idx
+
+            if left > right:
+                return
+
+            root = TreeNode(preorder[preorder_idx])
+            preorder_idx += 1
+
+            root_idx = cache[root.val]
+            root.left = helper(left, root_idx - 1)
+            root.right = helper(root_idx + 1, right)
+
+            return root
+
+        return helper(0, len(inorder) - 1)
 
 root = TreeNode(3)
 root.left = TreeNode(9)
 root.right = TreeNode(20)
 root.right.left = TreeNode(15)
 root.right.right = TreeNode(7)
-print(Solution().buildTree(preorder=[3, 9, 20, 15, 7], inorder=[9, 3, 15, 20, 7]))
+print(Solution().buildTree1(preorder=[3, 9, 20, 15, 7], inorder=[9, 3, 15, 20, 7]))
