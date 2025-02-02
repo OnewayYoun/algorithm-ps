@@ -30,3 +30,29 @@ class Solution:
             return head.next
         cache[length - n].next = cache[length - n + 2]
         return head
+
+    def removeNthFromEnd1(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy = left = ListNode()
+        dummy.next = right = head
+
+        for _ in range(n):
+            right = right.next
+
+        while right:
+            left = left.next
+            right = right.next
+
+        left.next = left.next.next
+        return dummy.next
+
+
+"""
+head = [1,2]
+n = 2
+
+Output
+[]
+
+Expected
+[2]
+"""
