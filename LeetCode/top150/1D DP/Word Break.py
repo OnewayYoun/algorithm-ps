@@ -19,11 +19,11 @@ class Solution:
 
         for i in range(len(s) + 1):
             for word in wordDict:
-                if s[i:i + len(word)] == word and dp[i]:
+                if dp[i] and s[i:i + len(word)] == word:
                     if i + len(word) == len(s) + 1:
                         return True
                     dp[i + len(word)] = True
         return dp[len(s)]
 
 
-Solution().wordBreak(s="cars", wordDict=["car", "ca", "rs"])
+print(Solution().wordBreak(s="cars", wordDict=["car", "ca", "rs"]))
