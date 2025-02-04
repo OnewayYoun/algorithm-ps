@@ -37,5 +37,23 @@ class Solution:
             idx += 1
         return ''.join(map(''.join, answer))
 
+    # optimized version
+    def convert1(self, s: str, numRows: int) -> str:
+        if numRows == 1:
+            return s
+
+        answer = [[] for _ in range(numRows)]
+        cur_direction = -1  # 1: down, -1: up
+        cur_idx = 0
+
+        for char in s:
+            if cur_idx in (0, numRows - 1):  # change direction when the cur_idx in the boarder
+                cur_direction *= -1
+            answer[cur_idx].append(char)
+            cur_idx += cur_direction
+
+        return ''.join(map(''.join, answer))
+
 
 print(Solution().convert("PAYPALISHIRING", numRows=4))
+print(Solution().convert1("PAYPALISHIRING", numRows=4))
