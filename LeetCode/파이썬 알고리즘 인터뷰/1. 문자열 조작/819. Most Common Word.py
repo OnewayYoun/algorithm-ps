@@ -5,8 +5,7 @@ import re
 
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        new_paragraph = re.sub(r"[^a-zA-Z ]", " ", paragraph)
-        print(new_paragraph.split(" "))
+        new_paragraph = re.sub(r"[^a-zA-Z]", " ", paragraph)
         counter = Counter(new_paragraph.lower().split()).most_common()
         answer_idx = 0
         for i in range(len(banned)):
