@@ -42,6 +42,18 @@ class Solution:
                 return [i, search[target - v]]
             search[v] = i
 
+    def twoSum5(self, nums: List[int], target: int) -> List[int]:
+        sorted_nums = sorted(enumerate(nums), key=lambda x: x[1])
+        left, right = 0, len(sorted_nums) - 1
+
+        while left != right:
+            if sorted_nums[left][1] + sorted_nums[right][1] == target:
+                return [sorted_nums[left][0], sorted_nums[right][0]]
+            elif sorted_nums[left][1] + sorted_nums[right][1] < target:
+                left += 1
+            else:
+                right -= 1
+
 
 if __name__ == "__main__":
-    print(Solution().twoSum3(nums=[2, 7, 11, 15], target=9))
+    print(Solution().twoSum5(nums=[2, 7, 11, 15], target=9))
