@@ -15,7 +15,23 @@ class Solution:
         return True
 
 
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = [char for char in s.lower() if char.isalnum()]
+        left, right = 0, len(s) - 1
+        answer = True
+
+        while left < right:
+            if s[left] != s[right]:
+                return False
+
+            left += 1
+            right -= 1
+
+        return answer
+
+
+
 if __name__ == '__main__':
-    s = "A man, a plan, a canal: Panama"
-    answer = True
-    print(answer == Solution().isPalindrome(s))
+    s = "acc"
+    print(Solution().isPalindrome(s))
