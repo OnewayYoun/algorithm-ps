@@ -42,4 +42,19 @@ class Solution2:
         return idx
 
 
-print(Solution2().removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3]))
+class Solution3:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        k, cnt = 1, 1
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i - 1]:
+                cnt += 1
+            else:
+                cnt = 1
+            if cnt <= 2:
+                nums[k] = nums[i]
+                k += 1
+        return k
+
+
+print(Solution3().removeDuplicates([1, 1, 1, 2, 2, 3]))
+print(Solution3().removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3]))
