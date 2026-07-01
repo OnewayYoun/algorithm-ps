@@ -12,5 +12,16 @@ class Solution:
                 left += 1
         return left > right
 
+    def isSubsequence1(self, s: str, t: str) -> bool:
+        idx = 0
+
+        for char in t:
+            if idx == len(s):
+                return True
+            if char == s[idx]:
+                idx += 1
+        return idx == len(s)
+
 
 print(Solution().isSubsequence(s="abc", t="ahbgcdc"))
+print(Solution().isSubsequence1(s="abc", t="ahbgcdc"))
