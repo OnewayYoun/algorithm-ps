@@ -40,6 +40,46 @@ class Solution:
         return dummy_node.next
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def mergeTwoLists1(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        empty_node = tail = ListNode()
+        while list1 and list2:
+            if list1.val < list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
+
+        if list1:
+            tail.next = list1
+        if list2:
+            tail.next = list2
+
+        return empty_node.next
+
+
 n1, n2 = ListNode(1), ListNode(1)
 
 n1.next = ListNode(2)
@@ -48,4 +88,4 @@ n1.next.next = ListNode(4)
 n2.next = ListNode(3)
 n2.next.next = ListNode(4)
 
-print(Solution().mergeTwoLists(n1, n2))
+print(Solution().mergeTwoLists1(n1, n2))
