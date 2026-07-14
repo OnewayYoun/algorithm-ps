@@ -31,6 +31,54 @@ class Solution:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def isPalindrome1(self, s: str) -> bool:
+        s = [char for char in ''.join(s).lower() if char.isalnum()]
+        return s == s[::-1]
+
+    def isPalindrome2(self, s: str) -> bool:
+        s = [char for char in ''.join(s).lower() if char.isalnum()]
+        left, right = 0, len(s) - 1
+
+        while left < right:
+            if s[left] != s[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
+
+    def isPalindrome3(self, s: str) -> bool:
+        s = re.sub(r'[^0-9a-z]', '', s.lower())
+        return s == s[::-1]
+
+
 if __name__ == '__main__':
-    s = "acc"
-    print(Solution().isPalindrome(s))
+    s = "A man, a plan, a canal: Panama"
+    print(Solution().isPalindrome3(s))
