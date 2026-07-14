@@ -24,4 +24,42 @@ class Solution:
             dd[num] = idx
 
 
-print(Solution().twoSum([2, 7, 11, 15], 9))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def twoSum1(self, nums: List[int], target: int) -> List[int]:
+        d = defaultdict(int)
+        for idx, num in enumerate(nums):
+            if target - num in d:
+                return [idx, d[target - num]]
+            d[num] = idx
+        return []
+
+    def twoSum2(self, nums: List[int], target: int) -> List[int]:
+        new_nums = [[num, idx] for idx, num in enumerate(nums)]
+        new_nums.sort(key=lambda x: x[0])
+        left, right = 0, len(nums) - 1
+
+        while left < right:
+            if new_nums[left][0] + new_nums[right][0] > target:
+                right -= 1
+            elif new_nums[left][0] + new_nums[right][0] < target:
+                left += 1
+            else:
+                return [new_nums[left][1], new_nums[right][1]]
+
+
+print(Solution().twoSum2([3, 2, 4], 6))
