@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import List
 
 
@@ -24,5 +25,16 @@ class Solution:
             else:
                 return [left + 1, right + 1]
 
+    def twoSum1(self, numbers: List[int], target: int) -> List[int]:
+        dd = defaultdict(int)
 
-print(Solution().twoSum(numbers=[2, 7, 11, 15], target=9))
+        for idx, num in enumerate(numbers):
+            if target - num in dd:
+                return [dd[target - num], idx + 1]
+            else:
+                dd[num] = idx + 1
+
+        return []
+
+
+print(Solution().twoSum1(numbers=[2, 7, 11, 15], target=9))
