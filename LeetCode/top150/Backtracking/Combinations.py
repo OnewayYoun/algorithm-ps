@@ -49,6 +49,44 @@ class Solution:
         return answer
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def combine3(self, n: int, k: int) -> List[List[int]]:
+        answer = []
+
+        def DFS(idx, cur):
+            if len(cur) == k:
+                answer.append(cur[:])
+                return
+
+            for i in range(idx, n + 1):
+                cur.append(i)
+                DFS(i + 1, cur)
+                cur.pop()
+
+        DFS(1, [])
+        return answer
+
+
 # print(Solution().combine(n=4, k=2))
 # print(Solution().combine1(n=4, k=2))
-print(Solution().combine2(n=4, k=2))
+print(Solution().combine3(n=4, k=2))
