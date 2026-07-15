@@ -31,4 +31,34 @@ class Solution:
         return answer
 
 
-print(Solution().letterCombinations("23"))
+    def letterCombinations1(self, digits: str) -> List[str]:
+        d = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
+        }
+        answer = []
+        cur = []
+
+        def DFS(idx):
+            if len(cur) == len(digits):
+                answer.append(''.join(cur))
+                return
+
+            for char in d[digits[idx]]:
+                cur.append(char)
+                DFS(idx + 1)
+                cur.pop()
+
+
+        DFS(0)
+
+        return answer
+
+
+print(Solution().letterCombinations1("23"))
