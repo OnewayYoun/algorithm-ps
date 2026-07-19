@@ -51,3 +51,30 @@ class Solution:
                     dq.append(node.right)
 
         return answer
+
+
+
+
+
+
+
+
+
+
+
+    def rightSideView_bfs(self, root: Optional[TreeNode]) -> List[int]:
+        answer = []
+        if not root:
+            return answer
+        dq = deque([root])
+
+        while dq:
+            for _ in range(len(dq)):
+                node = dq.popleft()
+                if node.left:
+                    dq.append(node.left)
+                if node.right:
+                    dq.append(node.right)
+            answer.append(node.val)
+
+        return answer
