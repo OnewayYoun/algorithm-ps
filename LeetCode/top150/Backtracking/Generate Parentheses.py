@@ -23,15 +23,3 @@ class Solution:
 if __name__ == "__main__":
     # Output: ["((()))","(()())","(())()","()(())","()()()"]
     print(Solution().generateParenthesis(n=3))
-
-
-
-def dfs():
-    if ~~~:
-        pass
-
-    if ~~~:
-        pass
-
-    append
-    pop()_
