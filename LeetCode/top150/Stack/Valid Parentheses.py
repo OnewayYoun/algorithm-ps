@@ -45,6 +45,46 @@ class Solution:
             s = s.replace('{}', '').replace('[]', '').replace('()', '')
         return not s
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def isValid3(self, s: str) -> bool:
+        stack = []
+        parentheses_map = {
+            ')': '(',
+            ']': '[',
+            '}': '{'
+        }
+
+        for char in s:
+            if char in parentheses_map.values():
+                stack.append(char)
+            else:
+                if not stack:
+                    return False
+                if parentheses_map[char] != stack.pop():
+                    return False
+
+        return True if not stack else False
+
 # print(Solution().isValid("("))
 # print(Solution().isValid1("("))
 print(Solution().isValid2("(]"))
