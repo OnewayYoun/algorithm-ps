@@ -33,4 +33,41 @@ class Solution:
         return '/' + '/'.join(stack)
 
 
-print(Solution().simplifyPath(path="/../"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def simplifyPath1(self, path: str) -> str:
+        stack = []
+        for i in path.split('/'):
+            if not i or i == '.':
+                continue
+            if i == '..':
+                if stack:
+                    stack.pop()
+                continue
+            stack.append(i)
+
+        return '/' + '/'.join(stack)
+
+print(Solution().simplifyPath1(path="/.../a/../b/c/../d/./"))
+# print(Solution().simplifyPath1(path="/../"))
+# Output: "/.../b/d"
