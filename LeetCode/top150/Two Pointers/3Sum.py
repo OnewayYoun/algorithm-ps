@@ -34,4 +34,38 @@ class Solution:
         return list(map(list, answer))
 
 
-print(Solution().threeSum([-1, 0, 1, 2, -1, -4]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def threeSum3(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        answer = set()
+
+        for idx, val in enumerate(nums):
+            dd = set()
+            if idx > 0 and nums[idx] == nums[idx - 1]:
+                continue
+
+            for i in range(idx + 1, len(nums)):
+                if -val - nums[i] in dd:
+                    answer.add((val, nums[i], -val - nums[i]))
+                dd.add(nums[i])
+
+        return list(map(list, answer))
+
+print(Solution().threeSum3([0, 0, 0, 0]))
