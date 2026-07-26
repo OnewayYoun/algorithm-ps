@@ -59,5 +59,77 @@ class Solution:
         return [f'{x}' if x == y else f'{x}->{y}' for x, y in tmp]
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def summaryRanges3(self, nums: List[int]) -> List[str]:
+        answer = []
+        i = 0
+
+        while i < len(nums):
+            start = nums[i]
+
+            while i < len(nums) - 1 and nums[i] + 1 == nums[i + 1]:
+                i += 1
+
+            if start == nums[i]:
+                answer.append(str(start))
+            else:
+                answer.append(f'{start}->{nums[i]}')
+            i += 1
+
+        return answer
+
+    def summaryRanges4(self, nums: List[int]) -> List[str]:
+        answer = []
+
+        for num in nums:
+            if answer and answer[-1][1] == num - 1:
+                answer[-1][1] = num
+            else:
+                answer.append([num, num])
+
+        return [f'{x}->{y}' if x != y else f'{x}' for x, y in answer]
+
+
+
 # print(Solution().summaryRanges1([0, 1, 2, 4, 5, 7]))
-print(Solution().summaryRanges2([0, 1, 2, 4, 5, 7]))
+print(Solution().summaryRanges4([0, 1, 2, 4, 5, 7]))
+
+
+"""
+Input: nums = [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: The ranges are:
+[0,2] --> "0->2"
+[4,5] --> "4->5"
+[7,7] --> "7"
+
+Input: nums = [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: The ranges are:
+[0,0] --> "0"
+[2,4] --> "2->4"
+[6,6] --> "6"
+[8,9] --> "8->9"
+"""
