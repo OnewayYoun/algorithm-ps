@@ -43,4 +43,41 @@ class Solution:
         return answer
 
 
-print(Solution().merge1(intervals=[[1, 3], [2, 6], [8, 10], [15, 18]]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def merge2(self, intervals: List[List[int]]) -> List[List[int]]:
+        answer = []
+        intervals.sort()
+
+        for interval in intervals:
+            if answer and answer[-1][0] <= interval[0] <= answer[-1][1]:
+                answer[-1][1] = max(answer[-1][1], interval[1])
+            else:
+                answer.append(interval)
+        return answer
+
+
+print(Solution().merge2(intervals=[[1, 4], [2, 3]]))
+
+"""
+Input: intervals = [[4,7],[1,4]]
+Output: [[1,7]]
+Explanation: Intervals [1,4] and [4,7] are considered overlapping.
+"""
