@@ -14,4 +14,8 @@ class Solution:
         return ' '.join(s.split()[::-1])
 
 
+    def reverseWords1(self, s: str) -> str:
+        return ' '.join(reversed(s.split()))
+
+
 print(Solution().reverseWords(s="a good   example"))
