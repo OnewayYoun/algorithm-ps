@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 class Solution:
     """
     Input: s = "PAYPALISHIRING", numRows = 3
@@ -54,6 +57,20 @@ class Solution:
 
         return ''.join(map(''.join, answer))
 
+    def convert2(self, s: str, numRows: int) -> str:
+        cur = 1
+        direction = -1
+        dd = defaultdict(list)
 
-print(Solution().convert("PAYPALISHIRING", numRows=4))
-print(Solution().convert1("PAYPALISHIRING", numRows=4))
+        for char in s:
+            dd[cur].append(char)
+            if cur == 1 or cur == numRows:
+                direction *= -1
+
+            cur += direction
+
+        return ''.join([''.join(val) for val in dd.values()])
+
+
+# print(Solution().convert("PAYPALISHIRING", numRows=4))
+print(Solution().convert2("PAYPALISHIRING", numRows=4))
