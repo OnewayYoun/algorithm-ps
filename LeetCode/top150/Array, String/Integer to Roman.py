@@ -86,6 +86,31 @@ class Solution:
                 break
         return answer
 
+    def intToRoman3(self, num: int) -> str:
+        answer = []
+        roman_dict = {
+            1000: "M",
+            900: "CM",
+            500: "D",
+            400: "CD",
+            100: "C",
+            90: "XC",
+            50: "L",
+            40: "XL",
+            10: "X",
+            9: "IX",
+            5: "V",
+            4: "IV",
+            1: "I"
+        }
+
+        for key in sorted(roman_dict, reverse=True):
+            quotient = num // key
+            num %= key
+            answer.append(quotient * roman_dict[key])
+
+        return ''.join(answer)
+
 
 print(Solution().intToRoman(3749))
 print(Solution().intToRoman2(3749))
