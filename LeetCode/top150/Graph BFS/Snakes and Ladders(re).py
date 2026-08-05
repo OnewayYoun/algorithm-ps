@@ -38,7 +38,52 @@ class Solution:
         return bfs(1, 0)
 
 
-board = [[1, 1, -1],
-         [1, 1, 1],
-         [-1, 1, 1]]
-print(Solution().snakesAndLadders(board))
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def snakesAndLadders1(self, board: List[List[int]]) -> int:
+        visited = set()
+        n = len(board)
+
+        def get_coordinate(num: int) -> tuple[int, int]:
+            row = (num - 1) // n
+            col = (num - 1) % n
+            if row % 2 == 1:
+                col = -(col + 1)
+
+            return -(row + 1), col
+
+        def bfs(step, cur_num):
+            dq = deque([(step, cur_num)])
+            while dq:
+                step, cur_num = dq.popleft()
+                for i in range(1, 7):
+                    nxt = cur_num + i
+                    if nxt > n**2:
+                        break
+                    r, c = get_coordinate(nxt)
+                    if board[r][c] != -1:
+                        nxt = board[r][c]
+                    if nxt not in visited:
+                        dq.append((step + 1, nxt))
+                        visited.add(nxt)
+                    if nxt == n ** 2:
+                        return step + 1
+            return -1
+
+        return bfs(0, 1)
+
+
+board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
+
+print(Solution().snakesAndLadders1(board))
