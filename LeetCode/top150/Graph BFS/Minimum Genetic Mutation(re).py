@@ -31,6 +31,50 @@ class Solution:
         return -1
 
 
-print(Solution().minMutation(startGene="AAAAAAAA", endGene="CCCCCCCC",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def minMutation1(self, startGene: str, endGene: str, bank: List[str]) -> int:
+        bank = set(bank)
+        visited = set()
+        mutation = 'ACGT'
+
+        def bfs(cnt):
+            dq = deque()
+            dq.append((startGene, cnt))
+
+            while dq:
+                cur, cnt = dq.popleft()
+                for i in range(len(cur)):
+                    for j in mutation:
+                        new_gen = cur[:i] + j + cur[i + 1:]
+                        if new_gen in bank and new_gen not in visited:
+                            visited.add(new_gen)
+                            dq.append((new_gen, cnt + 1))
+                            if new_gen == endGene:
+                                return cnt + 1
+            return -1
+
+
+
+        return bfs(0)
+
+print(Solution().minMutation1(startGene="AAAAAAAA", endGene="CCCCCCCC",
                              bank=["AAAAAAAA", "AAAAAAAC", "AAAAAACC", "AAAAACCC", "AAAACCCC", "AACACCCC", "ACCACCCC",
                                    "ACCCCCCC", "CCCCCCCA"]))
