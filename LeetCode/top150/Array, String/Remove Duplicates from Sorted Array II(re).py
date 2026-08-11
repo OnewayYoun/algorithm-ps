@@ -32,5 +32,14 @@ class Solution:
             cnt += 1
         return idx
 
+    def removeDuplicates2(self, nums: List[int]) -> int:
+        cur = 2
+        for i in range(2, len(nums)):
+            if nums[i] != nums[cur - 2]:
+                nums[cur] = nums[i]
+                cur += 1
+        return cur
+
+
 # print(Solution().removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3]))
-print(Solution().removeDuplicates1([0, 0, 1, 1, 1, 1, 2, 3, 3]))
+print(Solution().removeDuplicates2([1, 1, 1, 2, 2, 3]))

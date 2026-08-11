@@ -64,7 +64,51 @@ class Solution:
 
         return dp(0)
 
+    def canJump4(self, nums: List[int]) -> bool:
+        memo = {len(nums) - 1: True}
+
+        def dfs(idx):
+            if idx in memo:
+                return memo[idx]
+
+            for i in range(1, nums[idx] + 1):
+                if dfs(idx + i):
+                    memo[idx] = True
+                    return True
+            memo[idx] = False
+            return False
+
+        return dfs(0)
+
+    def canJump5(self, nums: List[int]) -> bool:
+        dp = [False] * len(nums)
+        dp[0] = True
+
+        for i in range(len(nums)):
+            # if not dp[i]:
+            #     continue
+
+            for j in range(1, nums[i] + 1):
+                if i + j < len(nums):
+                    dp[i + j] = True
+
+        return dp[-1]
+
+    def canJump7(self, nums: List[int]) -> int:
+        memo = [False for _ in range(len(nums))]
+        memo[0] = True
+        cur = 0
+
+        for i in range(len(nums)):
+            if memo[i] == True:
+                for j in range(cur + 1, min(i + nums[i] + 1, len(nums))):
+                    memo[j] = True
+
+                cur = max(cur, i + nums[i])
+
+        return memo[-1]
+
 
 # print(Solution().canJump([0, 1]))
-# print(Solution().canJump1([3, 5, 1, 0, 4]))
-print(Solution().canJump3([3, 5, 1, 0, 4]))
+print(Solution().canJump7([4, 3, 0, 1, 3, 4]))
+# print(Solution().canJump5([0, 2, 3]))
