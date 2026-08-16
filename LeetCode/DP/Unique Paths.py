@@ -36,6 +36,20 @@ class Solution2:
         return dp[(m, n)]
 
 
+class Solution3:
+    dp = {}
+
+    def uniquePaths(self, m: int, n: int) -> int:
+        if (m, n) in self.dp:
+            return self.dp[(m, n)]
+        if m == 1 or n == 1:
+            return 1
+
+        self.dp[(m, n)] = self.uniquePaths(m - 1, n) + self.uniquePaths(m, n - 1)
+        return self.dp[(m, n)]
+
 if __name__ == '__main__':
-    print(Solution().uniquePaths(2, 3))
-    print(Solution2().uniquePaths(2, 3))
+    # print(Solution().uniquePaths(2, 3))
+    # print(Solution2().uniquePaths(3, 7))
+    print(Solution3().uniquePaths(4, 4))
+

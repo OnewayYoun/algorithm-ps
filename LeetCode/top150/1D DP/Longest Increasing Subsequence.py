@@ -1,5 +1,5 @@
 from typing import List
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 
 
 class Solution:
@@ -15,6 +15,18 @@ class Solution:
         return max(dp)
 
 
+    def lengthOfLIS2(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [1] * n
+
+        for i in range(n):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+
+        return max(dp)
+
+
 class Solution2:
     def lengthOfLIS(self, nums: List[int]) -> int:
         answer = [nums[0]]
@@ -25,6 +37,8 @@ class Solution2:
                 answer[bisect_left(answer, val)] = val
         return len(answer)
 
-
-print(Solution().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
-print(Solution2().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
+tmp = [1,2,3,4,5,6]
+print(bisect_left(tmp, 5))
+# print(Solution().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
+# print(Solution().lengthOfLIS2([10, 9, 2, 5, 3, 7, 101, 18]))
+# print(Solution2().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
