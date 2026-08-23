@@ -76,8 +76,38 @@ class Solution:
         return answer
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def spiralOrder3(self, matrix: List[List[int]]) -> List[int]:
+        answer = []
+
+        while matrix:
+            answer += matrix.pop(0)
+            matrix = list(reversed(list(zip(*matrix))))
+
+        return answer
+
+
 print(Solution().spiralOrder([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
 print(Solution().spiralOrder2([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
+print(Solution().spiralOrder3([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
 
 
 # arr = [
