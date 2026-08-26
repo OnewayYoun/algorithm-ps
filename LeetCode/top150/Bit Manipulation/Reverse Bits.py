@@ -12,14 +12,15 @@ class Solution:
     """
 
     def reverseBits(self, n: int) -> int:
-        n = str(format(n, 'b'))
+        n = format(n, 'b')
         while len(n) != 32:
             n = '0' + n
         return int(n[::-1], 2)
 
     def reverseBits1(self, n: int) -> int:
-        n = str(format(n, 'b')).zfill(32)
+        n = format(n, 'b').zfill(32)
         return int(n[::-1], 2)
 
 
 print(Solution().reverseBits(43261596))
+print(Solution().reverseBits1(43261596))

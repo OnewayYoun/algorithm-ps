@@ -29,5 +29,5 @@ class Solution:
 
 
 print(Solution().hammingWeight(11))
-print(Solution().hammingWeight1(11))
+print(Solution().hammingWeight1(12))
 print(Solution().hammingWeight2(11))
