@@ -27,5 +27,35 @@ class Solution:
         return max_length
 
 
-print(Solution().lengthOfLongestSubstring("abbbaea"))
+
+
+
+
+
+
+
+
+
+    def lengthOfLongestSubstring1(self, s: str) -> int:
+        answer = 0
+        left, right = 0, 0
+        duplicate = set()
+
+        while right < len(s):
+            if s[right] not in duplicate:
+                duplicate.add(s[right])
+                answer = max(answer, len(duplicate))
+                right += 1
+            else:
+                while s[left] != s[right]:
+                    duplicate.remove(s[left])
+                    left += 1
+                right += 1
+                left += 1
+
+        return answer
+
+
+# print(Solution().lengthOfLongestSubstring("abbbaea"))
+print(Solution().lengthOfLongestSubstring1("pwwkew"))
 # print(Solution().lengthOfLongestSubstring("abcabcbb"))
