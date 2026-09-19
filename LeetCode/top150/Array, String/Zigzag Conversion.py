@@ -71,6 +71,25 @@ class Solution:
 
         return ''.join([''.join(val) for val in dd.values()])
 
+    def convert3(self, s: str, numRows: int) -> str:
+        if numRows == 1 or numRows >= len(s):
+            return s
 
-# print(Solution().convert("PAYPALISHIRING", numRows=4))
-print(Solution().convert2("PAYPALISHIRING", numRows=4))
+        res = []
+        cycle = 2 * (numRows - 1)
+
+        for row in range(numRows):
+            for i in range(row, len(s), cycle):
+                res.append(s[i])
+                diagonal_idx = i + cycle - 2 * row
+                if row not in (0, numRows - 1) and diagonal_idx < len(s):
+                    res.append(s[diagonal_idx])
+
+        return "".join(res)
+
+
+
+print(Solution().convert3("PAYPALISHIRING", numRows=4))
+# print(Solution().convert3("PAYPALISHIRING", numRows=4))
+# Output: "PINALSIGYAHRPI"
+# Output: "PINALSIGYAHPI"
